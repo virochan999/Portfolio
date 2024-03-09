@@ -20,7 +20,7 @@ This is a portfolio website built with Next.js, PostgreSQL, TypeScript, GraphQL,
 
 ## Getting Started
 
-1. Clone the repository: `git clone https://github.com/your-username/portfolio.git`
+1. Clone the repository: `git clone https://github.com/virochan999/Portfolio.git`
 2. Install dependencies: `npm install`
 3. Set up your PostgreSQL database and update the connection details in `.env` file.
 4. Run the development server: `npm run dev`
