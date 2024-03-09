@@ -1,0 +1,31 @@
+{
+  "appInformation": {
+    "title": "Portfolio",
+    "email": "virochan999@gmail.com",
+    "description": "Portfolio website for virochan sharma",
+    "githubUrl": "https://github.com/virochan999",
+    "copyright": "Copyright © 2022 virochan",
+    "socialHeading": "Social links",
+    "contact": "Contact me via",
+    "work": "See my work at"
+  },
+  "skills": {
+    "heading": "My Skills",
+    "technical": "Technical Skills",
+    "other": "Other skills"
+  },
+  "experience": {
+    "heading": "Experience"
+  },
+  "education": {
+    "heading": "Education"
+  },
+  "projectPage": {
+    "heading": "Projects",
+    "github": "Github",
+    "link": "Live"
+  },
+  "contact": {
+    "heading": "Contact"
+  }
+}

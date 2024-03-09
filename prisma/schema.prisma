@@ -1,0 +1,129 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String    @id @default(uuid())
+  email       String    @unique
+  image       String? 
+  designation String?
+  description String?
+  role        Role      @default(USER)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+model Profile {
+  id           String         @id @default(uuid())
+  email        String         @unique
+  name         String
+  image        String?
+  resume       String?
+  designation  String[]
+  description  String?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  skill        Skill?
+  experience   Experience[]
+  education    Education[]
+  project      Project[]
+  contact      Contact?
+}
+
+model Skill {
+  id           String     @id @default(uuid())
+  profile      Profile    @relation(fields: [profileId], references: [id])
+  profileId    String     @unique
+  professional Professional[]
+  technical    Technical[]
+  other        Other[]
+  description  String?
+}
+
+model Technical {
+  id           String     @id @default(uuid())
+  name         String
+  proficiency  String
+  logo         String
+  level        Int
+  skill        Skill      @relation(fields: [skillId], references: [id])
+  skillId      String
+}
+
+model Professional {
+  id           String     @id @default(uuid())
+  name         String
+  proficiency  String
+  logo         String
+  level        Int
+  skill        Skill      @relation(fields: [skillId], references: [id])
+  skillId      String
+}
+
+model Other {
+  id           String     @id @default(uuid())
+  name         String
+  proficiency  String
+  logo         String
+  level        Int
+  skill        Skill      @relation(fields: [skillId], references: [id])
+  skillId      String
+}
+
+model Education {
+  id           String     @id @default(uuid())
+  profile      Profile    @relation(fields: [profileId], references: [id])
+  profileId    String
+  name         String
+  startDate    String
+  endDate      String
+  college      String
+  percentage   String
+  description  String?
+}
+
+model Project {
+  id           String     @id @default(uuid())
+  name         String
+  technologies String[]
+  description  String
+  hostedLink   String
+  image        String
+  githubLink   String
+  profile      Profile    @relation(fields: [profileId], references: [id])
+  profileId    String
+}
+
+model Experience {
+  id          String    @id @default(uuid())
+  title       String
+  description String    @db.Text
+  startDate   String
+  endDate     String
+  location    String
+  company     String
+  profile     Profile   @relation(fields: [profileId], references: [id])
+  profileId   String
+}
+
+model Contact {
+  id        String   @id @default(uuid())
+  email     String
+  phone     String?
+  address   String?
+  profile   Profile  @relation(fields: [profileId], references: [id])
+  profileId String   @unique
+}
