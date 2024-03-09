@@ -28,6 +28,8 @@ const ProjectCard = ({ project }: { project: Project }) => {
               height={imageDimentions.md}
               fill={true}
               className="w-full h-full object-cover rounded-md"
+              placeholder="blur"
+              blurDataURL="LDA^q5?]4U8xFqS|r]rZ4nNFxbw}"
             />
           </div>
         </CardHeader>

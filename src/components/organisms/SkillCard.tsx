@@ -18,6 +18,8 @@ const SkillCard = ({ skill }: { skill: Skill }) => {
             height={imageDimentions.md}
             fill={true}
             className="w-full h-full"
+            placeholder="blur"
+            blurDataURL="LDA^q5?]4U8xFqS|r]rZ4nNFxbw}"
           />
         </div>
       )}

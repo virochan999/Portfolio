@@ -7,6 +7,8 @@ type ImagePropTypes = {
   height?: number
   className?: string
   fill?: boolean
+  placeholder?: "blur"
+  blurDataURL?: string
 }
 
 const NextImage = ({
