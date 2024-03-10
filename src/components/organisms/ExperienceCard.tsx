@@ -1,4 +1,4 @@
-import { Experience } from "@/types/experiences"
+import { ExperienceTypes } from "@/types/experiences"
 import React from "react"
 import {
   Accordion,
@@ -7,7 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
-const ExperienceCard = ({ experience }: { experience: Experience }) => {
+const ExperienceCard = ({ experience }: { experience: ExperienceTypes }) => {
   return (
     <div>
       <Accordion

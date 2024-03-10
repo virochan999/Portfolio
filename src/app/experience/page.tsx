@@ -3,7 +3,7 @@ import React, { Suspense } from "react"
 import fetchExperiences from "../actions/fetchExperience"
 import Await from "@/lib/await"
 import ExperienceCard from "@/components/organisms/ExperienceCard"
-import { Experience } from "@/types/experiences"
+import { ExperienceTypes } from "@/types/experiences"
 import { experience } from "@/Assets/local.json"
 import Heading from "@/components/atoms/Heading"
 import CardLoader from "@/components/organisms/CardLoader"
@@ -18,7 +18,7 @@ const Experience = async () => {
         <Await promise={promise}>
           {({ experiences }) => (
             <PageWrapper>
-              {experiences.map((experience: Experience) => (
+              {experiences.map((experience: ExperienceTypes) => (
                 <ExperienceCard
                   key={experience.id}
                   experience={experience}

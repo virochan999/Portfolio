@@ -1,7 +1,7 @@
-import { Education } from "@/types/education"
+import { EducationTypes } from "@/types/education"
 import React from "react"
 
-const EducationCard = ({ education }: { education: Education }) => {
+const EducationCard = ({ education }: { education: EducationTypes }) => {
   return (
     <div className="flex flex-col gap-2 p-4 border-b">
       <div className="flex justify-between flex-col md:flex-row gap-2">
