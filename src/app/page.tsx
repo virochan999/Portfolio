@@ -1,7 +1,7 @@
-import HomeProfile from "@/components/organisms/Profile"
-import SkeletonProfile from "@/components/organisms/SkeletonProfile"
-import Await from "@/lib/await"
-import { Suspense } from "react"
+// import HomeProfile from "@/components/organisms/Profile"
+// import SkeletonProfile from "@/components/organisms/SkeletonProfile"
+// import Await from "@/lib/await"
+// import { Suspense } from "react"
 import fetchProfile from "./actions/fetchProfile"
 export const dynamic = "force-dynamic"
 
@@ -10,11 +10,12 @@ export default function Home() {
 
   return (
     <>
-      <Suspense fallback={<SkeletonProfile />}>
+      <h1>Deployment check</h1>
+      {/* <Suspense fallback={<SkeletonProfile />}>
         <Await promise={promise}>
           {({ profile }) => <HomeProfile profile={profile} />}
         </Await>
-      </Suspense>
+      </Suspense> */}
     </>
   )
 }

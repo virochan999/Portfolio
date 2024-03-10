@@ -1,7 +1,7 @@
 type Query = string
 
 export const fetchGraphQL = async (query: Query) => {
-  const response = await fetch(process.env.PROFILE_API_URL as string, {
+  const response = await fetch("http://localhost:3000/api/profile", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
