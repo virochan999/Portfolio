@@ -4,7 +4,7 @@ import React, { Suspense } from "react"
 import fetchProjects from "../actions/fetchProjects"
 import ProjectCard from "@/components/organisms/ProjectCard"
 import { Project } from "@/types/project"
-import { projectPage } from "@/Assets/local.json"
+import { projectPageData } from "@/Assets/local.json"
 import Heading from "@/components/atoms/Heading"
 import SectionLoader from "@/components/organisms/SectionLoader"
 export const dynamic = "force-dynamic"
@@ -13,7 +13,7 @@ const Projects = () => {
   const promise = fetchProjects()
   return (
     <>
-      <Heading heading={projectPage.heading} />
+      <Heading heading={projectPageData.heading} />
       <Suspense
         fallback={
           <SectionLoader

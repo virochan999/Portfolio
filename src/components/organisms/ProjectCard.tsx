@@ -12,7 +12,7 @@ import Link from "next/link"
 import NextImage from "../atoms/Image"
 import { imageDimentions } from "@/styles/variables"
 import { GitHubLogoIcon, Link1Icon } from "@radix-ui/react-icons"
-import { projectPage } from "@/Assets/local.json"
+import ProjectInfo from "@/Assets/local.json"
 export const dynamic = "force-dynamic"
 
 const ProjectCard = ({ project }: { project: Project }) => {
@@ -60,7 +60,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             className="flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"
           >
             <Link1Icon />
-            <span>{projectPage.link}</span>
+            <span>{ProjectInfo.projectPageData.link}</span>
           </Link>
           <Link
             href={project.githubLink}
@@ -69,7 +69,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             className="flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"
           >
             <GitHubLogoIcon />
-            <span>{projectPage.github}</span>
+            <span>{ProjectInfo.projectPageData.github}</span>
           </Link>
         </CardFooter>
       </Card>
