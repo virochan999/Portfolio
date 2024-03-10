@@ -16,16 +16,16 @@ const Education = () => {
       <Heading heading={education.heading} />
       <Suspense fallback={<CardLoader count={4} />}>
         <Await promise={promise}>
-          {({ education }) =>
-            education.map((education: Education) => (
-              <PageWrapper>
+          {({ education }) => (
+            <PageWrapper>
+              {education.map((education: Education) => (
                 <EducationCard
-                  key={education.id}
                   education={education}
+                  key={education.id}
                 />
-              </PageWrapper>
-            ))
-          }
+              ))}
+            </PageWrapper>
+          )}
         </Await>
       </Suspense>
     </>

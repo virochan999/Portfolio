@@ -11,6 +11,8 @@ type NavbarProps = {
 }
 
 const Navbar = ({ isBarOpen, handleCloseBar }: NavbarProps) => {
+  const pathName = usePathname()
+
   return (
     <div
       className={`${
@@ -18,8 +20,6 @@ const Navbar = ({ isBarOpen, handleCloseBar }: NavbarProps) => {
       } md:flex gap-2`}
     >
       {navlinks.map((links) => {
-        const pathName = usePathname()
-
         return (
           <Navlink
             href={links.path}
