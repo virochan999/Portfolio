@@ -14,12 +14,14 @@ type ImagePropTypes = {
 const NextImage = ({
   width,
   height,
+  alt,
   fill = false,
   ...props
 }: ImagePropTypes) => {
   return (
     <Image
       fill={fill}
+      alt={alt}
       {...props}
       priority
       sizes={`${width}`}

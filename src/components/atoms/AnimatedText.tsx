@@ -23,7 +23,7 @@ const AnimatedTypingText = ({ designation }: { designation: string[] }) => {
     const intervalId = setInterval(changeText, 5000)
 
     return () => clearInterval(intervalId)
-  }, [])
+  }, [designation])
 
   return (
     <span
