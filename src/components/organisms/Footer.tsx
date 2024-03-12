@@ -52,7 +52,7 @@ const SocialIcons = [
 ]
 const Footer = () => {
   return (
-    <footer className="border-t p-2 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-300 dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-gray-700">
+    <footer className="border-t py-4 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-300 dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-gray-700">
       <div className="flex justify-around flex-col md:flex-row gap-4">
         <div className="flex flex-col gap-2 items-center md:items-start">
           <h3 className="text-lg mb-1 font-semibold">
