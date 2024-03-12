@@ -11,11 +11,11 @@ export default function Home() {
   return (
     <>
       <h1>Deployment check</h1>
-      <Suspense fallback={<SkeletonProfile />}>
+      {/* <Suspense fallback={<SkeletonProfile />}>
         <Await promise={promise}>
           {({ profile }) => <HomeProfile profile={profile} />}
         </Await>
-      </Suspense>
+      </Suspense> */}
     </>
   )
 }
