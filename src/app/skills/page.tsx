@@ -11,7 +11,8 @@ const Skills = async () => {
   return (
     <>
       <h3 className="text-3xl font-bold text-center">{skills.heading}</h3>
-      <Suspense
+      skills
+      {/* <Suspense
         fallback={
           <SectionLoader
             variant="secondary"
@@ -26,7 +27,7 @@ const Skills = async () => {
             </PageWrapper>
           )}
         </Await>
-      </Suspense>
+      </Suspense> */}
     </>
   )
 }
