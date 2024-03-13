@@ -22,7 +22,7 @@ const skeletonVariants: Record<string, SkeletonVariant> = {
     imageWidth: "w-[10rem]",
     imageHeight: "h-[10rem]",
     gridCount: "grid-cols-5",
-    textLines: 2,
+    textLines: 1,
   },
 }
 

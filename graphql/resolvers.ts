@@ -38,8 +38,12 @@ export const resolvers = {
       const skills = await prisma.skill.findUnique({
         where: { profileId: _parent.id },
         include: {
-          professional: true,
-          technical: true,
+          professional: {
+            orderBy: { name: "asc" },
+          },
+          technical: {
+            orderBy: { name: "asc" },
+          },
           other: true,
         },
       })

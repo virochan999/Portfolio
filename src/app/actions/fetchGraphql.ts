@@ -1,8 +1,6 @@
 type Query = string
 
 export const fetchGraphQL = async (query: Query) => {
-  let url =
-    "https://portfolio-l0dfnbwgo-virochan-sharmas-projects.vercel.app/api/profile"
   const response = await fetch(process.env.PROFILE_API_URL as string, {
     method: "POST",
     headers: {

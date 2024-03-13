@@ -57,6 +57,7 @@ model Skill {
   technical    Technical[]
   other        Other[]
   description  String?
+  order        Int        @default(autoincrement())
 }
 
 model Technical {
@@ -111,6 +112,7 @@ model Project {
   githubLink   String
   profile      Profile    @relation(fields: [profileId], references: [id])
   profileId    String
+  order        Int        @default(autoincrement())
 }
 
 model Experience {

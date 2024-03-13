@@ -5,12 +5,13 @@ import SkillSection from "./SkillSection"
 import { skills } from "@/Assets/local.json"
 import PageWrapper from "@/components/organisms/PageWrapper"
 import SectionLoader from "@/components/organisms/SectionLoader"
+import Heading from "@/components/atoms/Heading"
 
 const Skills = async () => {
   let promise = fetchSkills()
   return (
     <>
-      <h3 className="text-3xl font-bold text-center">{skills.heading}</h3>
+      <Heading heading={skills.heading} />
       <Suspense
         fallback={
           <SectionLoader
