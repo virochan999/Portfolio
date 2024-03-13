@@ -57,7 +57,6 @@ model Skill {
   technical    Technical[]
   other        Other[]
   description  String?
-  order        Int        @default(autoincrement())
 }
 
 model Technical {
@@ -66,6 +65,7 @@ model Technical {
   proficiency  String
   logo         String
   level        Int
+  order        Int        @default(autoincrement())
   skill        Skill      @relation(fields: [skillId], references: [id])
   skillId      String
 }
@@ -76,6 +76,7 @@ model Professional {
   proficiency  String
   logo         String
   level        Int
+  order        Int        @default(autoincrement())
   skill        Skill      @relation(fields: [skillId], references: [id])
   skillId      String
 }
@@ -86,6 +87,7 @@ model Other {
   proficiency  String
   logo         String
   level        Int
+  order        Int        @default(autoincrement())
   skill        Skill      @relation(fields: [skillId], references: [id])
   skillId      String
 }
