@@ -17,8 +17,8 @@ export const dynamic = "force-dynamic"
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <div>
-      <Card className="max-w-[30rem] h-full flex flex-col">
+    <>
+      <Card className="max-w-[30rem] h-full flex flex-col shadow-lg">
         <CardHeader className="flex flex-col items-center p-4">
           <div className="relative w-[15rem] h-[15rem] shadow-lg">
             <NextImage
@@ -73,7 +73,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           </Link>
         </CardFooter>
       </Card>
-    </div>
+    </>
   )
 }
 

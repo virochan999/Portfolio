@@ -24,7 +24,7 @@ const Projects = () => {
       >
         <Await promise={promise}>
           {({ projects }) => (
-            <PageWrapper className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <PageWrapper className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {projects.map((project: Project) => (
                 <ProjectCard
                   key={project.id}

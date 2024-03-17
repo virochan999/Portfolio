@@ -42,7 +42,7 @@ export const resolvers = {
             orderBy: { name: "asc" },
           },
           technical: {
-            orderBy: { name: "asc" },
+            orderBy: { order: "asc" },
           },
           other: true,
         },
