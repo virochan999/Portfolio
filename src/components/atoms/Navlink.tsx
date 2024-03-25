@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ReactNode } from "react"
 import Link from "next/link"
 
 type NavlinkPropTypes = {
@@ -7,10 +7,16 @@ type NavlinkPropTypes = {
   className?: string
   target?: string
   onClick?: () => void
+  children?: ReactNode
 }
 
-const Navlink = ({ linkText, ...props }: NavlinkPropTypes) => {
-  return <Link {...props}>{linkText}</Link>
+const Navlink = ({ linkText, children, ...props }: NavlinkPropTypes) => {
+  return (
+    <Link {...props}>
+      {children}
+      {linkText}
+    </Link>
+  )
 }
 
 export default Navlink

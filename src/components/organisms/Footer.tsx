@@ -7,6 +7,7 @@ import {
   LinkedInLogoIcon,
   TwitterLogoIcon,
 } from "@radix-ui/react-icons"
+import Link from "next/link"
 
 const SocialIcons = [
   {
@@ -64,12 +65,21 @@ const Footer = () => {
                 key={social.name}
                 className="flex items-center justify-between gap-2 w-1/4"
               >
-                <div className="text-2xl">{social.logo}</div>
                 <Navlink
                   linkText={social.name}
                   href={social.path}
-                  className="text-sm hover:underline hover:decoration-sky-500 hidden md:block"
-                />
+                  className="text-sm hover:underline hover:decoration-sky-500 md:flex gap-2 hidden"
+                >
+                  <div className="text-2xl">{social.logo}</div>
+                </Navlink>
+                <Link
+                  href={social.path}
+                  prefetch={false}
+                  className="md:hidden"
+                  target="_blank"
+                >
+                  <div className="text-2xl">{social.logo}</div>
+                </Link>
               </div>
             ))}
           </div>
