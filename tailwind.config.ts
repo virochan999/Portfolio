@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import { backfaceVisibility } from "./tailwind.plugin"
 
 const config = {
   darkMode: ["class"],
@@ -95,7 +96,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), backfaceVisibility],
 } satisfies Config
 
 export default config
