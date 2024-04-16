@@ -27,5 +27,8 @@
   },
   "contact": {
     "heading": "Contact"
+  },
+  "errors": {
+    "serverErrorMessage": "Something went wrong, Please try again in sometime"
   }
 }

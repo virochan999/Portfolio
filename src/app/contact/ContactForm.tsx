@@ -1,18 +1,11 @@
 "use client"
 import React from "react"
-import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
-
-const schema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email("Invalid email address"),
-  message: z.string().min(1, "Message is required"),
-})
-
-type FormData = z.infer<typeof schema>
+import { Contact, ContactSchema } from "@/lib/types"
+import { sendEmail } from "@/app/actions/contact-form-action"
 
 const ContactForm = () => {
   const {
@@ -20,8 +13,8 @@ const ContactForm = () => {
     reset,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
+  } = useForm<Contact>({
+    resolver: zodResolver(ContactSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -29,18 +22,23 @@ const ContactForm = () => {
     },
   })
 
-  const formSubmit = (data: FormData) => {
-    toast.info("Work in progress for this functionlity", {
+  const formSubmit = async (data: Contact) => {
+    const response = sendEmail(data)
+
+    toast.promise(response, {
+      loading: "Loading...",
+      success: (data) => {
+        return `${data.success}`
+      },
+      error: (data) => {
+        return `${data}`
+      },
       action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
+        label: "Dismiss",
+        onClick: () => console.log("Action!"),
       },
     })
-    reset({
-      name: "",
-      email: "",
-      message: "",
-    })
+    handleReset()
   }
 
   const handleReset = () => {
