@@ -4,7 +4,7 @@ const AppLogo = ({ isBarOpen }: { isBarOpen: boolean }) => {
   return (
     <div className={`${isBarOpen ? "flex" : "hidden"} md:flex`}>
       <h1 className="font-bold flex items-center text-xl cursor-pointer">
-        Virochan Sharma
+        Portfolio
       </h1>
     </div>
   )

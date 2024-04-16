@@ -63,7 +63,7 @@ const ContactForm = () => {
         </label>
         <input
           type="text"
-          placeholder="Enter you name..."
+          placeholder="Enter your name..."
           {...register("name")}
           id="name"
           autoComplete="on"
@@ -86,7 +86,7 @@ const ContactForm = () => {
         </label>
         <input
           type="email"
-          placeholder="Enter you email..."
+          placeholder="Enter your email..."
           id="email"
           autoComplete="on"
           {...register("email")}
