@@ -17,7 +17,7 @@ const Projects = () => {
       <Suspense
         fallback={
           <SectionLoader
-            count={3}
+            count={6}
             variant="primary"
           />
         }

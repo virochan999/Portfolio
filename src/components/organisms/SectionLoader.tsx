@@ -1,5 +1,4 @@
 import React from "react"
-import { Skeleton } from "../ui/skeleton"
 import CardSkeleton from "../molecules/CardSkeleton"
 import skeletonVariants, { SkeletonVariant } from "@/config/skeletonConfig"
 

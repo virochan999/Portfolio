@@ -16,7 +16,7 @@ const Skills = async () => {
         fallback={
           <SectionLoader
             variant="secondary"
-            count={5}
+            count={10}
           />
         }
       >

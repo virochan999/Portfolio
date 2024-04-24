@@ -14,7 +14,7 @@ const Experience = async () => {
   return (
     <>
       <Heading heading={experience.heading} />
-      <Suspense fallback={<CardLoader count={4} />}>
+      <Suspense fallback={<CardLoader count={5} />}>
         <Await promise={promise}>
           {({ experiences }) => (
             <PageWrapper>
