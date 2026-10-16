@@ -12,7 +12,7 @@ const SectionLoader = ({ count, variant }: SectionLoaderProps) => {
 
   return (
     <div
-      className={` grid grid-cols-1 md:${variantConfig.gridCount} gap-4 p-2`}
+      className={`grid grid-cols-2 gap-4 ${variantConfig.gridCount}`}
     >
       {Array(count)
         .fill(0)

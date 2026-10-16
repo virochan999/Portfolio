@@ -1,26 +1,7 @@
-import { fetchGraphQL } from "./fetchGraphql"
+import { getProjects } from "@/lib/data"
 
-const fetchProjects = async () => {
-  const query = `
-    query Query {
-      profile {
-        projects {
-          githubLink
-          description
-          hostedLink
-          id
-          image
-          name
-          technologies
-        }
-      }
-    }
-  `
-  const { data } = await fetchGraphQL(query)
-
-  return {
-    projects: data?.profile[0].projects || null,
-  }
-}
+const fetchProjects = async () => ({
+  projects: await getProjects(),
+})
 
 export default fetchProjects

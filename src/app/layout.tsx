@@ -4,14 +4,21 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import Footer from "@/components/organisms/Footer"
 import { ThemeProvider } from "@/components/molecules/Theme-provider"
-import { appInformation } from "../../public/local.json"
+import { appInformation } from "@/Assets/local.json"
+import { SITE_URL } from "@/config/site"
 import { Toaster } from "@/components/ui/sonner"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: appInformation.title,
+  metadataBase: new URL(SITE_URL),
+  title: { default: appInformation.title, template: `%s | ${appInformation.title}` },
   description: appInformation.description,
+  openGraph: {
+    title: appInformation.title,
+    description: appInformation.description,
+    type: "website",
+  },
 }
 
 export default function RootLayout({
@@ -32,7 +39,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="flex flex-col flex-grow p-4 space-y-8">
+          <main className="mx-auto flex w-full max-w-6xl flex-grow flex-col space-y-10 px-4 py-8 md:px-6 md:py-12">
             {children}
           </main>
           <Footer />

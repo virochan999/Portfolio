@@ -1,16 +1,17 @@
 import Link from "next/link"
 import React from "react"
 
-const AppLogo = ({ isBarOpen }: { isBarOpen: boolean }) => {
+const AppLogo = () => {
   return (
-    <div className={`${isBarOpen ? "flex" : "hidden"} md:flex`}>
-      <Link
-        href={"/"}
-        className="font-bold flex items-center text-xl cursor-pointer uppercase font-serif"
-      >
-        Portfolio
-      </Link>
-    </div>
+    <Link
+      href="/"
+      className="flex items-center gap-2 text-lg font-bold tracking-tight"
+    >
+      <span className="bg-brand flex h-8 w-8 items-center justify-center rounded-lg text-sm font-extrabold text-white">
+        VS
+      </span>
+      <span className="hidden sm:inline">Virochan</span>
+    </Link>
   )
 }
 

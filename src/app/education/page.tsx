@@ -17,7 +17,7 @@ const Education = () => {
       <Suspense fallback={<CardLoader count={4} />}>
         <Await promise={promise}>
           {({ education }) => (
-            <PageWrapper>
+            <PageWrapper className="mx-auto flex w-full max-w-3xl flex-col gap-4">
               {education.map((education: EducationTypes) => (
                 <EducationCard
                   education={education}

@@ -19,11 +19,14 @@ const ContactForm = () => {
       name: "",
       email: "",
       message: "",
+      website: "",
     },
   })
 
   const formSubmit = async (data: Contact) => {
     const response = sendEmail(data)
+
+    response.then(handleReset, () => {})
 
     toast.promise(response, {
       loading: "Loading...",
@@ -38,7 +41,6 @@ const ContactForm = () => {
         onClick: () => console.log("Action!"),
       },
     })
-    handleReset()
   }
 
   const handleReset = () => {
@@ -52,8 +54,17 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit(formSubmit)}
-      className="flex flex-col gap-6 w-full md:w-3/12 p-4 bg-[#fff] rounded shadow-[0_5px_15px_#e6f0f0] text-[#2b2d42]"
+      className="glass relative flex w-full max-w-lg flex-col gap-6 rounded-2xl p-6 shadow-xl"
     >
+      <input
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute -left-[9999px] h-0 w-0 opacity-0"
+        {...register("website")}
+      />
+
       <div className="flex flex-col gap-2 relative">
         <label
           htmlFor="name"
@@ -68,10 +79,10 @@ const ContactForm = () => {
           id="name"
           autoComplete="on"
           aria-invalid={!!errors.name}
-          className="p-1 rounded-sm bg-[#e6f0f0] text-sm font-semibold"
+          className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         />
         {errors.name && (
-          <p className="absolute top-full text-xs text-red-400 font-semibold">
+          <p className="mt-1 text-xs font-semibold text-red-500">
             {errors.name.message}
           </p>
         )}
@@ -91,10 +102,10 @@ const ContactForm = () => {
           autoComplete="on"
           {...register("email")}
           aria-invalid={!!errors.email}
-          className="p-1 rounded-sm bg-[#e6f0f0] text-sm font-semibold"
+          className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         />
         {errors.email && (
-          <p className="absolute top-full text-xs text-red-400 font-semibold">
+          <p className="mt-1 text-xs font-semibold text-red-500">
             {errors.email.message}
           </p>
         )}
@@ -113,10 +124,10 @@ const ContactForm = () => {
           id="message"
           rows={5}
           aria-invalid={!!errors.message}
-          className="px-1 rounded-sm bg-[#e6f0f0] text-sm font-semibold"
+          className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         />
         {errors.message && (
-          <p className="absolute top-full text-xs text-red-400 font-semibold">
+          <p className="mt-1 text-xs font-semibold text-red-500">
             {errors.message.message}
           </p>
         )}
@@ -126,7 +137,8 @@ const ContactForm = () => {
         <Button
           type="submit"
           className="font-bold"
-          variant="secondary"
+          variant="brand"
+          size="lg"
         >
           Submit
         </Button>

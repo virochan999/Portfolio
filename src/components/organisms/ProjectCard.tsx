@@ -1,79 +1,60 @@
 import { Project } from "@/types/project"
-import React from "react"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 import Link from "next/link"
-import NextImage from "../atoms/Image"
-import { imageDimentions } from "@/styles/variables"
-import { GitHubLogoIcon, Link1Icon } from "@radix-ui/react-icons"
+import Image from "next/image"
+import { ExternalLink } from "lucide-react"
+import { GitHubLogoIcon } from "@radix-ui/react-icons"
 import ProjectInfo from "@/Assets/local.json"
-export const dynamic = "force-dynamic"
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <>
-      <Card className="max-w-[30rem] h-full flex flex-col shadow-lg">
-        <CardHeader className="flex flex-col items-center p-4">
-          <div className="relative w-[15rem] h-[15rem] shadow-lg">
-            <NextImage
-              src={project.image}
-              alt={project.name}
-              width={imageDimentions.md}
-              height={imageDimentions.md}
-              fill={true}
-              className="w-full h-full object-cover rounded-md"
-              placeholder="blur"
-              blurDataURL="LDA^q5?]4U8xFqS|r]rZ4nNFxbw}"
-            />
-          </div>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-4 items-center flex-grow">
-          <CardTitle> {project.name}</CardTitle>
-          <CardContent className="p-0 text-sm">
-            {project.technologies.map((tech, index) => (
-              <span
-                key={tech}
-                className="font-semibold"
-              >
-                {" "}
-                {`${tech} ${
-                  index !== project.technologies.length - 1 ? "," : ""
-                }`}{" "}
-              </span>
-            ))}
-          </CardContent>
-          <CardDescription className="whitespace-pre-wrap">
-            {project.description}
-          </CardDescription>
-        </CardContent>
-        <CardFooter className="flex gap-4 font-semibold justify-evenly">
+    <article className="glass group flex h-full flex-col overflow-hidden rounded-2xl transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-indigo-500/10">
+      <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+        <Image
+          src={project.image ?? "/icon.png"}
+          alt={project.name}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover object-top transition duration-500 group-hover:scale-105"
+        />
+      </div>
+
+      <div className="flex flex-grow flex-col gap-3 p-5">
+        <h3 className="text-xl font-bold">{project.name}</h3>
+        <ul className="flex flex-wrap gap-1.5">
+          {project.technologies.map((tech) => (
+            <li
+              key={tech}
+              className="rounded-full bg-indigo-500/10 px-2.5 py-0.5 text-xs font-medium text-indigo-600 dark:text-indigo-300"
+            >
+              {tech}
+            </li>
+          ))}
+        </ul>
+        <p className="flex-grow whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground">
+          {project.description}
+        </p>
+        <div className="flex gap-3 pt-2">
           <Link
             href={project.hostedLink}
             prefetch={false}
             target="_blank"
-            className="flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"
+            className="bg-brand inline-flex h-9 items-center gap-2 rounded-lg px-4 text-sm font-semibold text-white transition hover:opacity-90"
           >
-            <Link1Icon />
-            <span>{ProjectInfo.projectPageData.link}</span>
+            <ExternalLink size={14} />
+            {ProjectInfo.projectPageData.link}
           </Link>
           <Link
             href={project.githubLink}
             prefetch={false}
             target="_blank"
-            className="flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"
+            className="inline-flex h-9 items-center gap-2 rounded-lg border px-4 text-sm font-semibold transition hover:bg-accent"
           >
             <GitHubLogoIcon />
-            <span>{ProjectInfo.projectPageData.github}</span>
+            {ProjectInfo.projectPageData.github}
           </Link>
-        </CardFooter>
-      </Card>
-    </>
+        </div>
+      </div>
+    </article>
   )
 }
 

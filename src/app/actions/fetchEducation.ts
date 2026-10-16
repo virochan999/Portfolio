@@ -1,25 +1,7 @@
-import { fetchGraphQL } from "./fetchGraphql"
+import { getEducation } from "@/lib/data"
 
-const fetchEducation = async () => {
-  const query = `
-    query Query {
-      profile {
-        education {
-          college
-          description
-          endDate
-          id
-          name
-          startDate
-        }
-      }
-    }
-  `
-  const { data } = await fetchGraphQL(query)
-
-  return {
-    education: data?.profile[0].education || null,
-  }
-}
+const fetchEducation = async () => ({
+  education: await getEducation(),
+})
 
 export default fetchEducation

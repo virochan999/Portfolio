@@ -1,37 +1,39 @@
 "use client"
-import { useEffect, useRef } from "react"
 
+import { useEffect, useState } from "react"
+import { AnimatePresence, motion } from "motion/react"
+
+// Rotates through the designations with a short fade/slide.
 const AnimatedTypingText = ({ designation }: { designation: string[] }) => {
-  const ref = useRef<HTMLSpanElement | null>(null)
+  const [index, setIndex] = useState(0)
+  const firstRender = index === 0
 
   useEffect(() => {
-    let arrayIndex = 0
-    const changeText = () => {
-      if (arrayIndex < designation.length) {
-        ref!.current!.innerHTML = designation[arrayIndex]
-        arrayIndex += 1
-      } else {
-        arrayIndex = 0
-        ref!.current!.innerHTML = designation[arrayIndex]
-        arrayIndex += 1
-      }
-    }
-    changeText()
-    ref!.current!.classList.add(
-      "before:animate-[animate-text_5s_steps(40)_infinite]"
+    if (designation.length < 2) return
+    const id = setInterval(
+      () => setIndex((i) => (i + 1) % designation.length),
+      2800
     )
-    const intervalId = setInterval(changeText, 5000)
-
-    return () => clearInterval(intervalId)
+    return () => clearInterval(id)
   }, [designation])
 
+  if (designation.length === 0) return null
+
   return (
-    <span
-      ref={ref}
-      className="font-extrabold inline-block text-[#a53860] relative before:top-0 overflow-hidden
-        dark:before:bg-[hsl(222.2_84%_4.9%)] before:bg-white before:absolute before:border-l-4
-        before:left-0 before:w-full before:h-full"
-    ></span>
+    <span className="relative inline-flex h-[1.3em] overflow-hidden align-bottom">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={designation[index]}
+          initial={firstRender ? false : { y: "100%", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: "-100%", opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="text-gradient font-extrabold whitespace-nowrap"
+        >
+          {designation[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
   )
 }
 

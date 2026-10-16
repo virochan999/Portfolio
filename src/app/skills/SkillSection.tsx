@@ -9,10 +9,8 @@ type SkillSectionProps = {
 const SkillSection = ({ skills }: SkillSectionProps) => {
   return (
     <section className="flex flex-col gap-4">
-      <h4 className="text-xl w-fit px-4 font-extrabold">
-        {`${pageInfo.skills.technical} :-`}
-      </h4>
-      <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 p-4 gap-12">
+      <h4 className="text-xl font-bold">{pageInfo.skills.technical}</h4>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {skills.technical?.map((skill) => (
           <SkillCard
             skill={skill}
@@ -20,8 +18,8 @@ const SkillSection = ({ skills }: SkillSectionProps) => {
           />
         ))}
       </div>
-      <h4 className="text-xl w-fit px-4 font-extrabold">{`${pageInfo.skills.other} :-`}</h4>
-      <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 p-4 gap-12">
+      <h4 className="mt-6 text-xl font-bold">{pageInfo.skills.other}</h4>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {skills.other?.map((skill) => (
           <SkillCard
             skill={skill}

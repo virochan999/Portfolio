@@ -8,7 +8,7 @@ import SectionLoader from "@/components/organisms/SectionLoader"
 import Heading from "@/components/atoms/Heading"
 
 const Skills = async () => {
-  let promise = fetchSkills()
+  const promise = fetchSkills()
   return (
     <>
       <Heading heading={skills.heading} />
@@ -23,7 +23,7 @@ const Skills = async () => {
         <Await promise={promise}>
           {({ skills }) => (
             <PageWrapper>
-              <SkillSection skills={skills} />
+              {skills && <SkillSection skills={skills} />}
             </PageWrapper>
           )}
         </Await>

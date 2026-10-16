@@ -1,10 +1,10 @@
 interface AwaitProps<T> {
   promise: Promise<T>
-  children: (value: T) => JSX.Element
+  children: (value: T) => React.JSX.Element
 }
 
 const Await = async <T>({ promise, children }: AwaitProps<T>) => {
-  let data = await promise
+  const data = await promise
   return children(data)
 }
 

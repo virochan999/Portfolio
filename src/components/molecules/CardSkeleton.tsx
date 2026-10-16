@@ -10,8 +10,8 @@ type CardSkeletonProps = {
 const CardSkeleton = ({ variantConfig }: CardSkeletonProps) => {
   const { cardHeight, textLines, imageWidth, imageHeight } = variantConfig
   return (
-    <div className={`${cardHeight} flex flex-col gap-4 border p-4`}>
-      <div className="w-full flex justify-center">
+    <div className={`${cardHeight} glass flex flex-col items-center gap-4 rounded-2xl p-4`}>
+      <div className="flex w-full justify-center">
         <Skeleton className={`${imageWidth} ${imageHeight}`} />
       </div>
 

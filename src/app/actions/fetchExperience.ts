@@ -1,25 +1,7 @@
-import { fetchGraphQL } from "./fetchGraphql"
+import { getExperiences } from "@/lib/data"
 
-const fetchExperiences = async () => {
-  const query = `
-  query Query {
-    profile {
-      experiences {
-        description
-        endDate
-        id
-        startDate
-        title
-        company
-      }
-    }
-  }
-  `
-  const { data } = await fetchGraphQL(query)
-
-  return {
-    experiences: data?.profile[0].experiences || null,
-  }
-}
+const fetchExperiences = async () => ({
+  experiences: await getExperiences(),
+})
 
 export default fetchExperiences
