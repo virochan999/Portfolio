@@ -3,53 +3,38 @@ import { useState } from "react"
 import AppLogo from "../molecules/App-logo"
 import { ModeToggle } from "../molecules/ModeToggle"
 import Navbar from "../molecules/Navbar"
-// import Profile from "../molecules/Profile"
-// import SearchBar from "../molecules/SearchBar"
 import { MenuIcon, X } from "lucide-react"
-import { Button } from "../ui/button"
 
 export default function Header() {
-  const [isBarOpen, setIsBarOpen] = useState(false)
-
-  const handleCloseBar = () => {
-    setIsBarOpen(false)
-  }
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <header className="p-2 lg:px-6 flex justify-between items-center bg-gradient-to-r from-gray-200 via-gray-100 to-gray-300 dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-gray-700">
-      <div className={`flex items-center gap-y-28`}>
-        <Button
-          variant="secondary"
-          onClick={() => setIsBarOpen(true)}
-          className="md:hidden"
-        >
-          {!isBarOpen && <MenuIcon />}
-        </Button>
-        <div
-          className={`${
-            isBarOpen
-              ? "absolute w-screen gap-4 flex-col px-2 py-4 items-start top-0 left-0 h-[100vh] md:bg-none bg-black opacity-80 z-50 md:z-0"
-              : ""
-          } flex md:flex-row md:gap-20 md:opacity-100`}
-        >
-          <AppLogo isBarOpen={isBarOpen} />
-          <Navbar
-            isBarOpen={isBarOpen}
-            handleCloseBar={handleCloseBar}
-          />
-          {isBarOpen && (
-            <X
-              className="absolute right-2 top-4"
-              onClick={handleCloseBar}
-            />
-          )}
+    <header className="sticky top-0 z-50 border-b bg-background/70 backdrop-blur-lg">
+      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 md:px-6">
+        <AppLogo />
+
+        <Navbar className="hidden items-center gap-1 md:flex" />
+
+        <div className="flex items-center gap-2">
+          <ModeToggle />
+          <button
+            type="button"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            onClick={() => setIsOpen((open) => !open)}
+            className="rounded-md p-2 hover:bg-accent md:hidden"
+          >
+            {isOpen ? <X size={20} /> : <MenuIcon size={20} />}
+          </button>
         </div>
       </div>
-      {/* <SearchBar /> */}
-      <div className="flex items-center">
-        <ModeToggle />
-        {/* <Profile /> */}
-      </div>
+
+      {isOpen && (
+        <Navbar
+          onNavigate={() => setIsOpen(false)}
+          className="mx-auto flex max-w-6xl flex-col gap-1 border-t px-4 py-3 md:hidden"
+        />
+      )}
     </header>
   )
 }

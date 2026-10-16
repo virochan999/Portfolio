@@ -17,7 +17,7 @@ const Experience = async () => {
       <Suspense fallback={<CardLoader count={5} />}>
         <Await promise={promise}>
           {({ experiences }) => (
-            <PageWrapper>
+            <PageWrapper className="mx-auto flex w-full max-w-3xl flex-col gap-6 border-l-2 border-border pl-8">
               {experiences.map((experience: ExperienceTypes) => (
                 <ExperienceCard
                   key={experience.id}

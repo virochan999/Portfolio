@@ -6,44 +6,37 @@ import CircularProgressBar from "../molecules/CircularProgressBar"
 
 const SkillCard = ({ skill }: { skill: Skill }) => {
   return (
-    <>
-      <FlipCard
-        front={
-          <div
-            className="flex gap-4 p-4 rounded-md flex-col justify-center items-center  
-              shadow-[0_10px_40px_0px_rgba(0,0,0,0.3)] dark:shadow-[0_10px_40px_0px_rgba(255,255,255,0.3)]
-              hover:shadow-[0_10px_40px_0px_rgba(0,0,0,0.5)] dark:hover:shadow-[0_10px_40px_0px_rgba(255,255,255,0.5)]"
-          >
-            {skill.logo && (
-              <div className="relative w-[80px] h-[80px]">
-                <NextImage
-                  src={skill.logo}
-                  alt={skill.name}
-                  width={imageDimentions.md}
-                  height={imageDimentions.md}
-                  fill={true}
-                  className="w-full h-full"
-                  placeholder="blur"
-                  blurDataURL="LDA^q5?]4U8xFqS|r]rZ4nNFxbw}"
-                />
-              </div>
-            )}
-            <span
-              className="md:text-lg font-semibold"
-              key={skill.id}
-            >
-              {skill.name}
-            </span>
-          </div>
-        }
-        back={
-          <div className="flex flex-col gap-4 h-full items-center justify-center p-4 border-2 rounded-lg">
-            <CircularProgressBar percentage={skill.level} />
-            <p className="text-sm font-bold">Proficiency</p>
-          </div>
-        }
-      />
-    </>
+    <FlipCard
+      front={
+        <div className="glass flex h-full flex-col items-center justify-center gap-3 rounded-2xl p-4 transition hover:shadow-xl hover:shadow-indigo-500/10">
+          {skill.logo && (
+            <div className="relative h-14 w-14 md:h-16 md:w-16">
+              <NextImage
+                src={skill.logo}
+                alt={skill.name}
+                width={imageDimentions.md}
+                height={imageDimentions.md}
+                fill={true}
+                className="h-full w-full object-contain"
+                placeholder="blur"
+                blurDataURL="LDA^q5?]4U8xFqS|r]rZ4nNFxbw}"
+              />
+            </div>
+          )}
+          <span className="text-center text-sm font-semibold md:text-base">
+            {skill.name}
+          </span>
+        </div>
+      }
+      back={
+        <div className="glass flex h-full flex-col items-center justify-center gap-2 rounded-2xl p-4">
+          <CircularProgressBar percentage={skill.level} />
+          <p className="text-xs font-semibold text-muted-foreground">
+            {skill.proficiency}
+          </p>
+        </div>
+      }
+    />
   )
 }
 

@@ -6,35 +6,36 @@ import Navlink from "../atoms/Navlink"
 import { usePathname } from "next/navigation"
 
 type NavbarProps = {
-  isBarOpen: boolean
-  handleCloseBar: () => void
+  onNavigate?: () => void
+  className?: string
 }
 
-const Navbar = ({ isBarOpen, handleCloseBar }: NavbarProps) => {
+const Navbar = ({ onNavigate, className = "" }: NavbarProps) => {
   const pathName = usePathname()
 
   return (
-    <div
-      className={`${
-        isBarOpen ? "flex gap-2 flex-col md:flex-row w-3/4 md:w-full" : "hidden"
-      } md:flex gap-2`}
+    <nav
+      aria-label="Main"
+      className={className}
     >
-      {navlinks.map((links) => {
+      {navlinks.map((link) => {
+        const active =
+          link.path === "/" ? pathName === "/" : pathName.startsWith(link.path)
         return (
           <Navlink
-            href={links.path}
-            linkText={links.name}
-            key={links.name}
-            onClick={handleCloseBar}
-            className={`${
-              pathName === links.path
-                ? "bg-black text-white dark:text-black dark:bg-white"
-                : ""
-            } px-2 py-1 rounded-sm font-semibold hover:text-blue-400 text-sm`}
+            href={link.path}
+            linkText={link.name}
+            key={link.name}
+            onClick={onNavigate}
+            className={`relative rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+              active
+                ? "bg-foreground text-background"
+                : "text-muted-foreground hover:bg-accent hover:text-foreground"
+            }`}
           />
         )
       })}
-    </div>
+    </nav>
   )
 }
 

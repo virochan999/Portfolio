@@ -1,109 +1,34 @@
-import React from "react"
-import { appInformation } from "@/Assets/local.json"
-import Navlink from "@/components/atoms/Navlink"
-import {
-  GitHubLogoIcon,
-  InstagramLogoIcon,
-  LinkedInLogoIcon,
-  TwitterLogoIcon,
-} from "@radix-ui/react-icons"
 import Link from "next/link"
+import { appInformation } from "@/Assets/local.json"
+import SocialLinks from "@/components/molecules/SocialLinks"
+import { Mail } from "lucide-react"
 
-const SocialIcons = [
-  {
-    name: "Linkedin",
-    path: "https://www.linkedin.com/in/virochan-sharma-57675b151/",
-    logo: (
-      <LinkedInLogoIcon
-        height={20}
-        width={20}
-      />
-    ),
-  },
-  {
-    name: "Github",
-    path: "https://github.com/virochan999/",
-    logo: (
-      <GitHubLogoIcon
-        height={20}
-        width={20}
-      />
-    ),
-  },
-  {
-    name: "Instagram",
-    path: "https://www.instagram.com/virochan__sharma/",
-    logo: (
-      <InstagramLogoIcon
-        height={20}
-        width={20}
-      />
-    ),
-  },
-  {
-    name: "Twitter",
-    path: "https://twitter.com/VirochanSharma",
-    logo: (
-      <TwitterLogoIcon
-        height={20}
-        width={20}
-      />
-    ),
-  },
-]
 const Footer = () => {
   return (
-    <footer className="border-t py-4 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-300 dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-gray-700">
-      <div className="flex justify-around flex-col md:flex-row gap-4">
-        <div className="flex flex-col gap-2 items-center md:items-start">
-          <h3 className="text-lg mb-1 font-semibold">
-            {appInformation.socialHeading}
-          </h3>
-          <div className="flex md:flex-col gap-4 md:gap-2">
-            {SocialIcons.map((social) => (
-              <div
-                key={social.name}
-                className="flex items-center justify-between gap-2 w-1/4"
-              >
-                <Navlink
-                  linkText={social.name}
-                  href={social.path}
-                  className="text-sm hover:underline hover:decoration-sky-500 md:flex gap-2 hidden"
-                >
-                  <div className="text-2xl">{social.logo}</div>
-                </Navlink>
-                <Link
-                  href={social.path}
-                  prefetch={false}
-                  className="md:hidden"
-                  target="_blank"
-                >
-                  <div className="text-2xl">{social.logo}</div>
-                </Link>
-              </div>
-            ))}
-          </div>
+    <footer className="mt-12 border-t bg-background/60 backdrop-blur">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 px-4 py-10 text-center md:px-6">
+        <h2 className="text-2xl font-bold md:text-3xl">
+          Let&apos;s build something <span className="text-gradient">great</span>{" "}
+          together
+        </h2>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href={`mailto:${appInformation.email}`}
+            className="bg-brand inline-flex h-11 items-center gap-2 rounded-lg px-5 font-semibold text-white transition hover:opacity-90"
+          >
+            <Mail size={16} /> {appInformation.email}
+          </a>
+          <Link
+            href="/contact"
+            className="glass inline-flex h-11 items-center rounded-lg px-5 font-semibold transition hover:bg-accent"
+          >
+            Send a message
+          </Link>
         </div>
-        <div className="flex gap-8 justify-center">
-          <div className="min-w-[8rem] min-h-[8rem] px-2 flex flex-col justify-center items-center rounded-md bg-[rgba(255,255,255,0.3)] dark:bg-[rgba(0,0,0,0.3)] shadow-[5px_5px_1px_1px_rgba(0,0,0,0.3)] dark:shadow-[5px_5px_1px_1px_rgba(255,255,255,0.3)]">
-            <p className="text-sm font-semibold">{appInformation.contact}</p>
-            <a
-              href={`mailto:${appInformation.email}`}
-              className="font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
-            >
-              Email
-            </a>
-          </div>
-          <div className="min-w-[8rem] min-h-[8rem]px-2 flex flex-col justify-center items-center rounded-md bg-[rgba(255,255,255,0.3)] dark:bg-[rgba(0,0,0,0.3)] shadow-[5px_5px_1px_1px_rgba(0,0,0,0.3)] dark:shadow-[5px_5px_1px_1px_rgba(255,255,255,0.3)]">
-            <p className="text-sm font-semibold">{appInformation.work}</p>
-            <Navlink
-              linkText="Github"
-              href={appInformation.githubUrl}
-              className="font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
-              target="_blank"
-            />
-          </div>
-        </div>
+        <SocialLinks />
+        <p className="text-xs text-muted-foreground">
+          © {new Date().getFullYear()} Virochan Sharma. All rights reserved.
+        </p>
       </div>
     </footer>
   )

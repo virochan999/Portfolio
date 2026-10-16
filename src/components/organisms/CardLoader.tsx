@@ -11,7 +11,7 @@ const CardLoader = ({ count }: CardLoaderProps) => {
     <>
       {cards.map((_, index) => (
         <div
-          className="w-full p-4 border-b"
+          className="glass w-full rounded-2xl p-5"
           key={index}
         >
           <div className="flex justify-between flex-col md:flex-row gap-2">

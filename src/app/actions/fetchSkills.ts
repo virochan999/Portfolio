@@ -1,41 +1,7 @@
-import { fetchGraphQL } from "./fetchGraphql"
+import { getSkills } from "@/lib/data"
 
-const fetchSkills = async () => {
-  const query = `
-    query Query {
-      profile {
-        skills {
-          id
-          other {
-            id
-            level
-            name
-            logo
-            proficiency
-          }
-          professional {
-            id
-            level
-            name
-            logo
-            proficiency
-          }
-          technical {
-            id
-            level
-            name
-            logo
-            proficiency
-          }
-        }
-      }
-    }
-  `
-  const { data } = await fetchGraphQL(query)
-
-  return {
-    skills: data?.profile[0].skills || null,
-  }
-}
+const fetchSkills = async () => ({
+  skills: await getSkills(),
+})
 
 export default fetchSkills
